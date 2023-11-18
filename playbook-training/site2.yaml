@@ -1,0 +1,7 @@
+---
+    - hosts: cassandra
+      become: true
+
+      roles: 
+         - role: "/root/playbook-training/test-role"
+       

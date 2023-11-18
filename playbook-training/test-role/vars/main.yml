@@ -1,0 +1,31 @@
+---
+# vars file for test-role
+
+   mypkgs:
+     - telnet
+     - yum-utils
+     - device-mapper-persistent-data
+     - lvm2
+     - tree
+     - epel-release
+     - git
+     - curl
+     - wget
+     - telnet
+     - net-tools 
+     - cassandra
+  
+   bands:
+     - The Beatles
+     - Led Zeppelin
+     - The Police
+     - Rush
+
+
+# Cassandra seed config
+
+   cassandra_seed_resolution: static
+   cassandra_seeds:
+    - cassandra-1
+    - cassandra-2
+    - cassandra-3

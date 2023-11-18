@@ -1,0 +1,42 @@
+---
+# tasks file for test-role
+
+     - name: copy  cassandra repo
+       copy: 
+        src: /etc/yum.repos.d/cassandra.repo
+        dest: /etc/yum.repos.d
+
+
+
+     - name: Install The packages
+       yum:
+        name: "{{item}}"
+        state: present
+#       allowerasing: yes
+       loop: "{{mypkgs}}"
+       notify: 
+         - Reboot Nodes
+     - name: lets get the hostname
+       debug:
+         msg: "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
+
+     - name: set hostnames
+       hostname:
+         name: "{{ inventory_hostname }}"
+       tags: hostcheck
+
+     - name: show list
+       debug:
+         msg: "{{ bands }}"
+        
+
+
+
+
+
+
+
+
+
+
+
