@@ -1,0 +1,28 @@
+---
+ - name: all yum tasks
+   hosts: kubemasters
+   become: true
+   var casspackages:
+    - java 
+    - dsc30 
+    - cassandra30-tools 
+    - ntp
+
+
+   tasks:
+     - name: install utils
+       yum:
+         name: yum-utils
+         state: present
+ 
+     - name: copy cassandra repo
+       copy:
+         src: /etc/yum.repos.d/cassandra-repo
+         dest: /etc/yum.repos.d
+
+     - name: install packages
+       yum:
+         name: "{{item}}"
+         state: present
+       loop: "{{cassspackages}}" 
+       

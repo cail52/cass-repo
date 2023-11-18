@@ -1,0 +1,20 @@
+---
+
+ - name: file operations
+
+   hosts: all
+
+
+   become: true
+
+   tasks:
+
+   - name: check status
+     stat: 
+        path: /etc/hosts
+     register: fs
+
+   - name: Show result
+     debug:
+        msg: file attributes {{fs}}
+ 

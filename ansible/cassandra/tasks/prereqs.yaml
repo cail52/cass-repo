@@ -1,0 +1,33 @@
+---
+       
+  - name: copy  cassandra repo
+    copy: 
+       src: /etc/yum.repos.d/cass.repo
+       dest: /etc/yum.repos.d
+
+  - name: Install The packages
+    yum:
+      name: "{{item}}"
+      state: present
+      allowerasing: yes
+      loop: "{{mypkgs}}"
+
+
+      - name: enable kubernetes
+        service: 
+          name: kubelet
+          state: started
+          enabled: yes
+
+
+
+
+
+
+
+
+
+
+
+
+

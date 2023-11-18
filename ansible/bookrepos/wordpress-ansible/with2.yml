@@ -1,0 +1,16 @@
+---
+  - name: revision
+    hosts: all
+    become: true
+
+    tasks:
+     - name: install php
+       yum:
+         name: "{{ item }}"
+         state: present
+       with items:
+         - php
+         - php-fpm
+         - php-mysql
+         - php-xml
+

@@ -1,0 +1,17 @@
+---
+  - name: revision
+    hosts: all
+    become: true
+    
+    tasks:
+     - name: connectivity test
+       ping:
+     - name: install mysql
+       yum:
+         name:  "{{item}}"
+         state: present
+       with_items:
+       - mysql
+       - python-mysqldb
+
+

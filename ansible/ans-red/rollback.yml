@@ -1,0 +1,21 @@
+---
+ - name: "My First Playbook"
+   hosts: localhost
+
+   tasks:
+   - name: "connectivity test"
+     ping:
+
+   - name: apache uninstall
+     service: 
+      name: httpd
+      state: stopped
+
+   - name: uninstall Apache
+     yum:
+        name: httpd
+        state: absent
+    
+   
+       
+

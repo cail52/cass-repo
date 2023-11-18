@@ -1,0 +1,23 @@
+---
+# tasks file for adcassandra
+ - name: get repo
+   copy:
+     src: /etc/yum.repos.d/cassandra.repo
+     dest: /etc/yum.repos.d/cassandra.repo
+
+ - name: install cassandra
+   yum:
+     name: cassandra
+     state: present
+
+ - name: install packages
+   yum:
+     name: "{{item}}"
+     state: present
+   loop: "{{casspackages}}"
+
+ - name: install utils
+   yum:
+     name: yum-utils
+     state: present
+

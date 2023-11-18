@@ -1,0 +1,9 @@
+---
+ - name: Distribute hosts
+   hosts: all
+
+   tasks:
+     - name: copy local file
+       copy:
+         src: /etc/hosts
+         dest: /etc

@@ -1,0 +1,9 @@
+---
+ - name: Print hostnames of 'registry' inventory group
+   hosts: cassandranodes
+   vars:
+    registry_hostnames: "{{ groups['registry'] | map('extract', hostvars) | map(attribute='ansible_host') }}"
+    debug:
+      var: inventory_host
+      msg: does this work?
+

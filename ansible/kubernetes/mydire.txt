@@ -1,0 +1,30 @@
+---
+ - name: file  create files
+
+   hosts: all
+
+
+   tasks:
+   - name:
+     file:
+       path: /root/rancher
+       owner: rancher
+       group: rancher
+       state: directory
+    - name touch file
+      file:
+        path:root/rancher/trenzalor3
+       src: /root/ans-red/doublebat
+       dest: /root/ans-red
+       mode: 0644
+   - name: change permissions
+     stat:
+
+       path: /root/rancher/trenzalor3
+       register: jf
+
+   - name: show status
+     debug:
+         msg: file attributes {{jf}}
+
+

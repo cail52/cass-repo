@@ -1,0 +1,8 @@
+---
+- name: “run a scriptt
+  hosts: all
+
+  tasks:
+  - name: run a script
+    shell: "/root/clean.sh" 
+

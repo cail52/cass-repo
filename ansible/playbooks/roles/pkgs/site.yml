@@ -1,0 +1,44 @@
+---
+ - name: all yum tasks
+   hosts: cassandranodes
+   become: true
+   vars:  
+     casspackages:
+      - java 
+
+
+   tasks:
+     - name: install utils
+       yum:
+         name: yum-utils
+         state: present
+ 
+     - name: get repo
+       copy:
+        src: /etc/yum.repos.d/cassandra.repo
+        dest: /etc/yum.repos.d/cassandra.repo
+
+
+     - name: install packages
+       yum:
+        name: "{{item}}"
+        state: present
+       loop: "{{casspackages}}"
+       
+     - name: install cassandra
+       yum:
+        name: cassandra
+        state: present
+
+     - name: create directory
+       file:
+        name: /root/phull/10
+        state: directory
+       notify: startup cassandra
+
+   handlers:
+     - name: startup cassandra
+       systemd:
+         name: cassandra
+         state: started
+         enabled: true

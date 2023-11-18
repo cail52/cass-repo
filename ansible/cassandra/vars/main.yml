@@ -1,0 +1,14 @@
+---
+# vars file for adcassandra
+
+  mypkgs:
+     - curl
+     - wget
+     - tree
+     - epel-release
+     - net-tools
+     - telnet
+     - yum-utils
+     - device-mapper-persistent-data
+     - lvm2
+

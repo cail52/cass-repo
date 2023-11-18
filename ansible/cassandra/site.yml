@@ -1,0 +1,9 @@
+---
+
+  - hosts: cassandra
+    become: true
+
+    roles:
+      - general
+
+       

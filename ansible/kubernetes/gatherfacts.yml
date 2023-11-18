@@ -1,0 +1,9 @@
+---
+  - name: display ip addresses
+    hosts: cassandranodes
+    gather_facts:  true
+
+    tasks:
+     - name: get the ip
+       debug:
+         var: ansible_facts['all_ipv4_addresses']

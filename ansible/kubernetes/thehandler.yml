@@ -1,0 +1,22 @@
+---
+ - name: 
+   hosts: all
+   become: yes
+
+   tasks:
+     - name: phull testing
+       file:
+         src:  /root/testh
+         state: directory
+       notify:  
+          - restart apache
+
+   handlers:
+
+     - name: restart apache
+       service:
+         name: httpd
+         state: restarted 
+
+  
+    

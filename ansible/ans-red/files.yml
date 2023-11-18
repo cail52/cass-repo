@@ -1,0 +1,21 @@
+---
+
+ - name: file operations
+
+   hosts: all 
+
+
+   tasks: 
+   - name: Copying file
+     become: true
+     copy: 
+       src: /root/ans-red/doublebat
+       dest: /root/ans-red
+       mode: 0644
+   - name: change permissions
+     file:
+      path:
+       /root/ans-red/doublebat
+      mode: a+w
+      
+

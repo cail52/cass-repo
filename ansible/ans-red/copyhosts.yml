@@ -1,0 +1,20 @@
+---
+
+ - name: file operations
+
+   hosts:  all
+
+   tasks: 
+   - name: Copying file
+     become: true
+     copy: 
+       src: /etc/hosts
+       dest: /etc
+       mode: 0644
+#   - name: change permissions
+#     file:
+#      path:
+#       /
+#      mode: a+w
+      
+

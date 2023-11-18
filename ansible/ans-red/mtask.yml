@@ -1,0 +1,12 @@
+---
+ - name: "Multitask playbook"
+   hosts: cassandranodes
+
+   tasks:
+   - name: "connectivity test"
+     ping:
+   - name: Hello
+     debug: 
+       var:  ansible_facts['nodename'] 
+     
+

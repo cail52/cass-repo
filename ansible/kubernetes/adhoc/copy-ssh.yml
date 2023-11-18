@@ -1,0 +1,5 @@
+---
+ - name: copy control keys to nodes
+
+   hosts: all
+   become: true

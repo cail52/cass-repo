@@ -1,0 +1,17 @@
+---
+# vars file for cassandra
+ vars:
+
+       mypkgs:
+
+       - curl
+       - git
+       - wget
+       - tree
+       - epel-release
+       - net-tools
+       - telnet
+       - yum-utils
+       - device-mapper-persistent-data
+       - lvm2
+

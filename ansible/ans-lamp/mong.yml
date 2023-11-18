@@ -1,0 +1,10 @@
+---
+  - name: all in one webserver installed
+    hosts: all
+    become: yes
+
+    tasks:
+     - name: install mongo for a laugh
+       yum:
+         name: mongodb-org
+         state: present

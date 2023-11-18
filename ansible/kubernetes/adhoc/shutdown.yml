@@ -1,0 +1,8 @@
+---
+  - name:  shutdown rancher nodes
+    hosts: all
+
+    tasks:
+      - name: shutdown nodes
+        command:  /sbin/shutdown -h now
+

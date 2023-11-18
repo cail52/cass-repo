@@ -1,0 +1,60 @@
+---
+
+  - name: Install Prereq software
+    hosts: ceph
+
+    vars:
+
+       mypkgs:
+
+       - curl
+       - wget
+       - tree
+       - epel-release
+       - net-tools
+       - telnet
+       - yum-utils 
+       - device-mapper-persistent-data 
+       - lvm2
+       - centos-release-ceph-pacific.noarch
+       - cephadm
+
+       
+    tasks:
+      - name: copy  docker-ce repos
+        copy: 
+          src: /etc/yum.repos.d/docker-ce.repo
+          dest: /etc/yum.repos.d
+
+      - name: copy kubernetes repo
+        copy: 
+          src: /etc/yum.repos.d/kubernetes.repo
+          dest: /etc/yum.repos.d
+
+
+      - name: Install The packages
+        yum:
+         name: "{{item}}"
+         state: present
+         allowerasing: yes
+        loop: "{{mypkgs}}"
+
+
+      - name: enable kubernetes
+        service: 
+          name: kubelet
+          state: started
+          enabled: yes
+
+
+
+
+
+
+
+
+
+
+
+
+

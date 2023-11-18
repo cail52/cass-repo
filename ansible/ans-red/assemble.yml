@@ -1,0 +1,34 @@
+---
+  - name: assembly
+    hosts: cassandranodes
+    become: true
+    gather_facts: true
+
+    tasks:
+     - name: set up directory for keys
+       file:
+         path: /opt/sshkeys
+         state: directory
+         owner: root
+         group: root
+         mode: 0700
+      
+     - name: copy over keys
+       copy:
+         src: /root/.ssh/id_rsa.pub
+         dest: /opt/sshkeys
+         owner: root
+         group: root
+         mode: 0600
+
+     - name: build authorized keys
+       assemble:
+         src: /opt/sshkeys
+         dest: /root/.ssh/authorized_keys
+         owner: root
+         group: root
+         mode: 0600
+
+     - name: print hostmame
+       debug: 
+        msg: Hostname is "{{hostvars['host']}}"

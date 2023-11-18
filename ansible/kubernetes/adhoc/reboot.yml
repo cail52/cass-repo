@@ -1,0 +1,7 @@
+---
+  - name: reboot rancher nodes
+    hosts: [mongonodes]
+
+    tasks:
+      - name: reboot nodes
+        reboot:
